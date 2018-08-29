@@ -313,7 +313,7 @@ export class ChatComponent implements OnInit {
 
   listenToNotInARoom() {
     this._socket.notInARoom().subscribe(() => {
-      this.toastr.info("You are not in a room.","Chat not sent")
+      this.toastr.info("You are not in a room.","Info")
     })
   }
 
