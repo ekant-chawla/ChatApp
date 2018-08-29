@@ -14,7 +14,8 @@ ng serve --proxy-config proxy-config.json
 
 # Back-end
 To initiate backend simply run the app.js
- Note: TO SEND EMAIL YOU MAY NEED TO DISABLE YOUR ANTIVIRUS AS MAILS ARE SENT THOUGH A GMAIL ACCOUNT.
+
+Note: TO SEND EMAIL YOU MAY NEED TO DISABLE YOUR ANTIVIRUS AS MAILS ARE SENT THOUGH A GMAIL ACCOUNT.
 
 node app.js
 
