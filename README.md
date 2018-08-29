@@ -2,6 +2,8 @@
 ChatApplication with Mongo Express Node Angular  
 
 Note : If you change any of the defaults, update the corresponding config files.
+Note: TO SEND EMAIL YOU MAY NEED TO DISABLE YOUR ANTIVIRUS AS MAILS ARE SENT THROUGH A GMAIL ACCOUNT.
+
 
 # node_module
 Before running the app run "npm install" in both the frontend and backend folder to install necessary npm modules.
@@ -14,8 +16,6 @@ ng serve --proxy-config proxy-config.json
 
 # Back-end
 To initiate backend simply run the app.js
-
-Note: TO SEND EMAIL YOU MAY NEED TO DISABLE YOUR ANTIVIRUS AS MAILS ARE SENT THOUGH A GMAIL ACCOUNT.
 
 node app.js
 
