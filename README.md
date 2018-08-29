@@ -2,6 +2,7 @@
 ChatApplication with Mongo Express Node Angular  
 
 Note : If you change any of the defaults, update the corresponding config files.
+
 Note: TO SEND EMAIL YOU MAY NEED TO DISABLE YOUR ANTIVIRUS AS MAILS ARE SENT THROUGH A GMAIL ACCOUNT.
 
 
