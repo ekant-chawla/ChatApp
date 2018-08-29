@@ -21,5 +21,5 @@ Run a mongodb server by running the following command. The default port for the 
 
 Note : If you change any of the defaults, update the corresponding config files.
 
-#API and Event documentations
+# API and Event documentations
 The api and socket-io event docs are in respective doc folders. 
