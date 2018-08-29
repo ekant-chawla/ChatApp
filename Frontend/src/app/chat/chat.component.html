@@ -1,0 +1,122 @@
+<!--Modal-->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-purple">
+        <h5 *ngIf="forNew" class="modal-title" id="modalLabel">Create Room</h5>
+        <h5 *ngIf="!forNew" class="modal-title" id="modalLabel">Edit Room</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form #createEdit="ngForm" ngNativeValidate>
+          <label for="roomName">Room Name</label>
+          <input #name="ngModel" class="form-control" required type="text" id="roomName" [(ngModel)]="roomName" name="roomName" placeholder="Enter Name">
+
+          <label *ngIf="!forNew" for="active">Active</label>
+          <select *ngIf="!forNew" class="form-control" id="active" [(ngModel)]="active" name="active">
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+
+          <label *ngIf='!forNew' for="invite-link">Invite Link</label>
+          <input *ngIf='!forNew' readonly class="form-control" readonly type="text" id='invite-link' value="http://localhost:4200/chat?join={{roomId}}">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button [disabled]="name.invalid" id="save-button" type="button" class="btn bg-purple" data-dismiss="modal" (click)="createEditRoom()">{{saveButtonText}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Button to toggle modal-->
+<button hidden id="b" type="button" data-toggle="modal" data-target="#modal">
+
+</button>
+
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav #sidenav mode="over" class="bg-white side-nav">
+
+    <nav class="navbar bg-purple">
+      <div class="w-100">
+        <div class="navbar-brand d-inline-block">Room List</div>
+        <img src="assets/add.svg" class="icon" (click)="createRoom()">
+      </div>
+    </nav>
+
+
+    <app-group-list *ngIf="groupList && groupList.length>0" [currentRoomId]='currentRoom?currentRoom.roomId:""' [groupList]="groupList"
+      (join)="joinRoom($event)" (edit)="editRoom($event)" (delete)="deleteRoom($event)"></app-group-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content style="background:#cfcaca">
+
+
+
+    <nav class="navbar bg-purple fluid-container">
+      <div class="row w-100 no-gutters">
+
+        <div class="col-1">
+          <img title="Room List" src="assets/list.svg" class="navbar-brand icon my-1" (click)="sidenav.open()">
+        </div>
+
+        <div style="min-height: 48px" class="col-9">
+          <div *ngIf="currentRoom" class="col-12 text-truncate room-title">{{currentRoom.name}}</div>
+          <div *ngIf="typingUser" class="col-12 text-truncate typing-title">{{typingUser}} typing</div>
+        </div>
+
+        <div class="col-1">
+          <img *ngIf="currentRoom" class="icon my-2 my-75" title="Leave Room" src="assets/leave.svg" (click)="leaveRoom()">
+        </div>
+
+        <div class="col-1">
+          <img class="icon my-2 my-75" title="Logout" src="assets/logout.svg" (click)="logout()">
+        </div>
+
+      </div>
+    </nav>
+
+
+    <div class="chat-area container">
+      <div class="row">
+
+        <div *ngFor="let chat of chatList" [ngClass]="{'text-right':chat.senderId == userId}" class="col-12">
+          <div class="card" [ngClass]="{'my-chat text-left':chat.senderId == userId, 'other-chat':chat.senderId != userId}">
+            <div class="card-body">
+              <h5 class="card-title">{{chat.senderName}}</h5>
+              <p class="card-text">{{chat.message}}</p>
+              <p class="card-text text-right timestamp">{{chat.createdOn|date:'M/d/yy, h:mm a'}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 text-center pt-3" *ngIf="!chatList">
+          <h3 class="text-dark">
+            How to start chating with friends
+          </h3>
+          <ol>
+            <li>Open list by clicking on the icon on top left.</li>
+            <li>Join a room. You can also create room by clicking + icon.</li>
+            <li>Chat with friends.</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="input-container bg-white">
+      <input [disabled]="!currentRoom" class="form-control" type="text" [(ngModel)]="message" name="message" placeholder="Enter message"
+        (keypress)="iAmTyping()">
+      <input [disabled]="!currentRoom" class="btn btn-success" type="button" value="send" (click)="sendChat()">
+    </div>
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

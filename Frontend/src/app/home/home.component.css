@@ -1,0 +1,9 @@
+#forgot-pass{
+    margin-left: 0.5rem;
+}
+
+#forgot-pass:hover{
+    text-decoration: underline mediumpurple;
+    cursor: pointer;
+    color: mediumpurple
+}

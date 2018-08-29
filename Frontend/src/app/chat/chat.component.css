@@ -1,0 +1,68 @@
+.sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.chat-area{
+  min-height: calc(100vh - 123px);
+  max-height: calc(100vh - 123px);
+  overflow-y: auto;
+  overflow-x: wrap ;
+  background: #efeaea
+}
+
+.input-container{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #9370db
+}
+
+.input-container > input[type ='text']{
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+.input-container > input[type ='button']{
+  margin:0 0.5rem;
+}
+
+.side-nav{
+  min-width: 300px;
+  max-width: 80%;
+}
+
+.card{
+  margin:0.5rem;
+}
+
+.my-chat{
+  background:rgba(90,70,210,0.3);
+  width: auto;
+  max-width: 80%;
+  min-width: 200px;
+  margin-left: auto;
+  display: inline-block;
+}
+
+.other-chat{
+  background: rgba(221, 145, 145,0.2);
+  width: auto;
+  max-width: 80%;
+  margin-right: auto;
+  display: inline-block;
+}
+
+.timestamp{
+  color: grey;
+}
+
+.typing-title{
+  font-size: 0.8rem;
+}
+
+.room-title{
+  font-size: 1.2rem;
+}

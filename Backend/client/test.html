@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<body>
+
+    This is test
+    <input type="button" onclick="clicked()">
+    <input type="button" onclick="sendChat()">
+
+</body>
+
+</html>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+    var socket = io('/api/v1/chat')
+    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Imxhc3ROYW1lIjoiIiwiZW1haWwiOiJla2FudC5jaGF3bGExQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6IkVrYW50IiwidXNlcklkIjoiZjVkNjk0In0sImV4cCI6MTUzNDE2NDgxOCwic3ViIjoiQXV0aFRva2VuIiwiaXNzIjoiQ2hhdEFwcCIsImlhdCI6MTUzNDA3ODQxN30.1DOIWLEb4qFmJX7fSTFaUOR8hr6tHzUKDFMl2EDXHSw'
+
+    socket.on('verifyUser', () => {
+        console.log('setting user')
+        socket.emit('setUser', token)
+    })
+
+    socket.on('authError', () => {
+        console.log("Auth error")
+    })
+
+
+    socket.on('userLeft', (name) => {
+        console.log(name + 'left')
+    })
+
+    socket.on('userJoin', (name) => {
+        console.log(name + 'joined')
+    })
+
+    socket.on('roomListUpdated', () => {
+        console.log('list updated')
+    })
+
+    socket.on('roomNameUpdated', (name) => {
+        console.log('Room name updated to ' + name)
+    })
+
+    socket.on('roomRemoved', () => {
+        console.log('room removed')
+    })
+
+
+
+    function clicked() {
+        console.log('joining room')
+        socket.emit('joinRoom', 'eed239')
+    }
+
+    function sendChat(){
+        socket.emit('newChat','my first message')
+    }
+
+
+
+
+
+
+
+
+
+</script>

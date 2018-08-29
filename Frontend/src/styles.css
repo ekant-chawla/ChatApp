@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    box-sizing: border-box
+}
+
+input:disabled{
+    cursor:not-allowed; 
+  }
+
+
+.bg-white{
+      background: white !important
+  }
+
+ 
+  input.ng-valid{
+    border-left: 5px solid green
+}
+
+input.ng-invalid{
+    border-left: 5px solid red
+
+}
+input.ng-pristine{
+    border-left: 5px solid mediumpurple
+    
+  }
+
+
+input:focus{
+    border: none !important;
+}
+
+input:invalid{
+    box-shadow: none;
+    box-shadow: #ced4da !important
+} 
+
+.bg-purple{
+    background: mediumpurple;
+    color: white;
+}
+
+.close{
+    color: white;
+  }
+  
+.close:hover{
+    color:white !important;
+}
+
+.icon{
+    width: 2rem;
+    display: inline-block;
+}
+
+.icon:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width : 768px) {
+    .icon{
+        width: 1.5rem;
+    }
+
+    .my-75{
+        margin-top: 0.75rem !important
+    }
+}

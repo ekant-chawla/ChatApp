@@ -1,0 +1,11 @@
+<div *ngFor="let room of list">
+  <div class="room-card" [ngClass]="{'current-room': room.roomId == currentRoomId,'inactive-room':!room.isActive}" *ngIf="room.isActive || room.creatorId == userId">
+
+    <p>{{room.name}}</p>
+    <p class="text-right">
+      <span class="mx-3" *ngIf="room.creatorId == userId" (click)="deleteRoom(room.roomId)">Delete</span>
+      <span class="mx-3" *ngIf="room.creatorId == userId" (click)="editRoom(room.roomId)">Edit</span>
+      <span class="mx-3" *ngIf='room.isActive' (click)="joinRoom(room.roomId)">Join</span>
+    </p>
+  </div>
+</div>
